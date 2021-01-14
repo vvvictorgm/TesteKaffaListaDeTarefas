@@ -5,6 +5,7 @@ import android.os.Bundle;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.testeKaffa.tarefas.Adapter.TarefaAdapter;
 import com.testeKaffa.tarefas.Model.Tarefa;
+import com.testeKaffa.tarefas.biblioteca.RecyclerItemClickListener;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
@@ -15,6 +16,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.AdapterView;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -34,7 +36,26 @@ public class  MainActivity extends AppCompatActivity {
         //Configure of RecyclerView
         //first, find the recyclerview in the window
         recyclerView = findViewById(R.id.recyclerListaDeTarefas);
+        //add the click
+        recyclerView.addOnItemTouchListener(
+                new RecyclerItemClickListener(getApplicationContext(), recyclerView, new RecyclerItemClickListener.OnItemClickListener() {
+                    @Override
+                    public void onItemClick(View view, int position) {
+                        
+                    }
 
+                    @Override
+                    public void onLongItemClick(View view, int position) {
+
+                    }
+
+                    @Override
+                    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+
+                    }
+                });
+
+        );
 
        FloatingActionButton fab = findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
