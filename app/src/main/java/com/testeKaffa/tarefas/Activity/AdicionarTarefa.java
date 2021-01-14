@@ -8,6 +8,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 
 import com.testeKaffa.tarefas.R;
+import com.testeKaffa.tarefas.bancoDeDados.DAO;
 
 public class AdicionarTarefa extends AppCompatActivity {
 
@@ -29,6 +30,8 @@ public class AdicionarTarefa extends AppCompatActivity {
         switch (item.getItemId()){
             case R.id.itemSalvar:
                 //when the user click in " save" use DAO for save
+                DAO dao = new DAO(getApplicationContext());
+
 
 
                 break;
