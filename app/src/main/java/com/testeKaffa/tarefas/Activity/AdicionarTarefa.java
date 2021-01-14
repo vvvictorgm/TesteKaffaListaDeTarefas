@@ -33,12 +33,16 @@ private TextInputEditText editTarefa;
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         switch (item.getItemId()){
             case R.id.itemSalvar:
+
+                String nomeTarefa = editTarefa.getText().toString();
                 //when the user click in " save" use DAO for save
-                DAO dao = new DAO(getApplicationContext());
-                Tarefa  tarefa = new Tarefa();
-                tarefa.setNomeTarefa("teste");
-                dao.salvar(tarefa);
-                finish();
+                if( !nomeTarefa.isEmpty()) {
+                    DAO dao = new DAO(getApplicationContext());
+                    Tarefa tarefa = new Tarefa();
+                    tarefa.setNomeTarefa(nomeTarefa);
+                    dao.salvar(tarefa);
+                    finish();
+                }
 
 
 
