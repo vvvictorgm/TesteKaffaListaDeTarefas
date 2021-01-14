@@ -40,7 +40,7 @@ public class  MainActivity extends AppCompatActivity {
         //first, find the recyclerview in the window
         recyclerView = findViewById(R.id.recyclerListaDeTarefas);
 
-  
+
         //add the click
         recyclerView.addOnItemTouchListener(
                 new RecyclerItemClickListener(getApplicationContext(), recyclerView, new RecyclerItemClickListener.OnItemClickListener() {

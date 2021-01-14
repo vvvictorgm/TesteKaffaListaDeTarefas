@@ -28,6 +28,8 @@ public class AdicionarTarefa extends AppCompatActivity {
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         switch (item.getItemId()){
             case R.id.itemSalvar:
+                //when the user click in " save" use DAO for save
+
 
                 break;
         }
