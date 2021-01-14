@@ -23,8 +23,9 @@ public class MainActivity extends AppCompatActivity {
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                //when you click on the FloatingActionButton, you go to layout AdicionarTarefa
                 Intent intent = new Intent(getApplicationContext(), AdicionarTarefa.class);
-                startActivity();
+                startActivity(intent);
             }
         });
     }
