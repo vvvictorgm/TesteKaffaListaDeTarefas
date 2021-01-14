@@ -1,8 +1,10 @@
-package com.testeKaffa.tarefas;
+package com.testeKaffa.tarefas.Activity;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+
+import com.testeKaffa.tarefas.R;
 
 public class AdicionarTarefa extends AppCompatActivity {
 
