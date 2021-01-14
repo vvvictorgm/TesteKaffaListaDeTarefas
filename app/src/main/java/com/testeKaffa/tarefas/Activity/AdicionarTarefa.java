@@ -38,6 +38,7 @@ private TextInputEditText editTarefa;
                 Tarefa  tarefa = new Tarefa();
                 tarefa.setNomeTarefa("teste");
                 dao.salvar(tarefa);
+                finish();
 
 
 

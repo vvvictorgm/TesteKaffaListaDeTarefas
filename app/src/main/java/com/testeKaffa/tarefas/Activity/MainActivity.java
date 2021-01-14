@@ -7,6 +7,7 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.testeKaffa.tarefas.Adapter.TarefaAdapter;
 import com.testeKaffa.tarefas.Model.Tarefa;
 import com.testeKaffa.tarefas.R;
+import com.testeKaffa.tarefas.bancoDeDados.DAO;
 import com.testeKaffa.tarefas.bancoDeDados.DbHelper;
 import com.testeKaffa.tarefas.biblioteca.RecyclerItemClickListener;
 
@@ -74,20 +75,9 @@ public class  MainActivity extends AppCompatActivity {
     //this funcition will load all the list
     public void carregarListaDeTarefas(){
         //list Tasks
-        //in the first moment i'll use static tarks
-        Tarefa tarefa1 = new Tarefa();
-        tarefa1.setNomeTarefa("ir ao mercado");
-        listaTarefas.add(tarefa1);
+        DAO dao = new DAO(getApplicationContext());
+        listaTarefas = dao.listar();
 
-        Tarefa tarefa2 = new Tarefa();
-        tarefa2.setNomeTarefa("ir a feira");
-        listaTarefas.add(tarefa2);
-
-        Tarefa tarefa3 = new Tarefa();
-        tarefa3.setNomeTarefa("terminar o projeto");
-        listaTarefas.add(tarefa3);
-        //configure adpter
-        tarefaAdapter = new TarefaAdapter(listaTarefas);
 
         //instance the object
 
