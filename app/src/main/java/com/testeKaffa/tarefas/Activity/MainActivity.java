@@ -5,6 +5,7 @@ import android.os.Bundle;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.snackbar.Snackbar;
 import com.testeKaffa.tarefas.Adapter.TarefaAdapeter;
+import com.testeKaffa.tarefas.Model.Tarefa;
 import com.testeKaffa.tarefas.R;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -17,9 +18,13 @@ import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class  MainActivity extends AppCompatActivity {
     private RecyclerView recyclerView;
     private TarefaAdapeter tarefaAdapter;
+    private List<Tarefa> listaTarefas = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,11 +51,22 @@ public class  MainActivity extends AppCompatActivity {
     //this funcition will load all the list
     public void carregarListaDeTarefas(){
         //list Tasks
+        //in the first moment i'll use static tarks
+        Tarefa tarefa1 = new Tarefa();
+        tarefa1.setNomeTarefa("ir ao mercado");
+        listaTarefas.add(tarefa1);
 
+        Tarefa tarefa2 = new Tarefa();
+        tarefa1.setNomeTarefa("ir a feira");
+        listaTarefas.add(tarefa2);
+
+        Tarefa tarefa3 = new Tarefa();
+        tarefa1.setNomeTarefa("terminal projeto");
+        listaTarefas.add(tarefa3);
         //configure adpter
 
         //instance the object
-        tarefaAdapter = new TarefaAdapeter( );
+        tarefaAdapter = new TarefaAdapeter(listaTarefas);
 
         //configure RecyclerView
         //we use LinearLayout because it's perfect for us in this app about lists
