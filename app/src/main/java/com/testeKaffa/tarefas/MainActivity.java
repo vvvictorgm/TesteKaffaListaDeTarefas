@@ -55,11 +55,11 @@ public class  MainActivity extends AppCompatActivity {
         listaTarefas.add(tarefa1);
 
         Tarefa tarefa2 = new Tarefa();
-        tarefa1.setNomeTarefa("ir a feira");
+        tarefa2.setNomeTarefa("ir a feira");
         listaTarefas.add(tarefa2);
 
         Tarefa tarefa3 = new Tarefa();
-        tarefa1.setNomeTarefa("terminar o projeto");
+        tarefa3.setNomeTarefa("terminar o projeto");
         listaTarefas.add(tarefa3);
         //configure adpter
         tarefaAdapter = new TarefaAdapter(listaTarefas);
