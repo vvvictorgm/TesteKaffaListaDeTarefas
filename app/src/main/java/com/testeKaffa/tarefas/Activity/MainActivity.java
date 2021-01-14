@@ -48,7 +48,7 @@ public class  MainActivity extends AppCompatActivity {
         //list Tasks
 
         //configure adpter
-        
+
         //instance the object
         tarefaAdapter = new TarefaAdapeter( );
 
