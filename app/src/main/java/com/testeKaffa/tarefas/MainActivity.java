@@ -41,7 +41,7 @@ public class  MainActivity extends AppCompatActivity {
                 new RecyclerItemClickListener(getApplicationContext(), recyclerView, new RecyclerItemClickListener.OnItemClickListener() {
                     @Override
                     public void onItemClick(View view, int position) {
-                        
+
                     }
 
                     @Override
@@ -53,8 +53,7 @@ public class  MainActivity extends AppCompatActivity {
                     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 
                     }
-                });
-
+                })
         );
 
        FloatingActionButton fab = findViewById(R.id.fab);
