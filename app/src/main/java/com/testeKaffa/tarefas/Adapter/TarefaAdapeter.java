@@ -7,11 +7,14 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 public class TarefaAdapeter extends RecyclerView.Adapter<TarefaAdapeter.MyViewHolder> {
+    //constructor
+    public TarefaAdapeter() {
+    }
 
     @NonNull
     @Override
     public MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        return null;
+
     }
 
     @Override
@@ -25,7 +28,7 @@ public class TarefaAdapeter extends RecyclerView.Adapter<TarefaAdapeter.MyViewHo
     }
 
     public class MyViewHolder extends RecyclerView.ViewHolder{
-
+        //constructor super
         public MyViewHolder(@NonNull View itemView) {
             super(itemView);
         }

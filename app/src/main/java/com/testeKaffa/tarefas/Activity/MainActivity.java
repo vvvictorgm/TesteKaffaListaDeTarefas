@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.snackbar.Snackbar;
+import com.testeKaffa.tarefas.Adapter.TarefaAdapeter;
 import com.testeKaffa.tarefas.R;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -16,8 +17,9 @@ import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
 
-public class MainActivity extends AppCompatActivity {
+public class  MainActivity extends AppCompatActivity {
     private RecyclerView recyclerView;
+    private TarefaAdapeter tarefaAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,7 +47,10 @@ public class MainActivity extends AppCompatActivity {
     public void carregarListaDeTarefas(){
         //list Tasks
 
-        //configure the adpter
+        //configure adpter
+        
+        //instance the object
+        tarefaAdapter = new TarefaAdapeter( );
 
         //configure RecyclerView
         //we use LinearLayout because it's perfect for us in this app about lists
