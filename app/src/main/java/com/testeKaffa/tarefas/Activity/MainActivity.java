@@ -1,10 +1,13 @@
-package com.testeKaffa.tarefas;
+package com.testeKaffa.tarefas.Activity;
 
+import android.content.ContentValues;
 import android.content.Intent;
 import android.os.Bundle;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.testeKaffa.tarefas.Adapter.TarefaAdapter;
 import com.testeKaffa.tarefas.Model.Tarefa;
+import com.testeKaffa.tarefas.R;
+import com.testeKaffa.tarefas.bancoDeDados.DbHelper;
 import com.testeKaffa.tarefas.biblioteca.RecyclerItemClickListener;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -36,6 +39,8 @@ public class  MainActivity extends AppCompatActivity {
         //Configure of RecyclerView
         //first, find the recyclerview in the window
         recyclerView = findViewById(R.id.recyclerListaDeTarefas);
+
+  
         //add the click
         recyclerView.addOnItemTouchListener(
                 new RecyclerItemClickListener(getApplicationContext(), recyclerView, new RecyclerItemClickListener.OnItemClickListener() {

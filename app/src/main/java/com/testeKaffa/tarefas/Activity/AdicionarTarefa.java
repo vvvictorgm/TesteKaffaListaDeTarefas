@@ -1,4 +1,4 @@
-package com.testeKaffa.tarefas;
+package com.testeKaffa.tarefas.Activity;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
