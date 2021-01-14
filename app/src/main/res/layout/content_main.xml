@@ -9,7 +9,7 @@
     tools:showIn="@layout/activity_main">
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recyclerView"
+        android:id="@+id/recyclerListaDeTarefas"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_marginStart="1dp"
