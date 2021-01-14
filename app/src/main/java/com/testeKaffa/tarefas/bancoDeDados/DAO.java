@@ -1,10 +1,13 @@
 package com.testeKaffa.tarefas.bancoDeDados;
 
+import android.content.ContentValues;
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
+import android.util.Log;
 
 import com.testeKaffa.tarefas.Model.Tarefa;
 
+import java.nio.DoubleBuffer;
 import java.util.List;
 
 public class DAO implements InterfaceDAO{
@@ -19,7 +22,14 @@ public class DAO implements InterfaceDAO{
 
     @Override
     public boolean salvar(Tarefa tarefa) {
-
+        ContentValues cv = new ContentValues();
+        cv.put("nome", "teste");
+        try{
+            salvarDadosNaTabela.insert(DbHelper.TABELA_TAREFAS, null, cv);
+        }catch (Exception e){
+            Log.e("AVISO", "ERRO AO SALVAR TAREFA"+ e.getMessage());
+            return false;
+        }
         return true;
     }
 
