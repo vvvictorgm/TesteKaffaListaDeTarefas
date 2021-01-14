@@ -1,12 +1,10 @@
-package com.testeKaffa.tarefas.Activity;
+package com.testeKaffa.tarefas;
 
 import android.content.Intent;
 import android.os.Bundle;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
-import com.google.android.material.snackbar.Snackbar;
-import com.testeKaffa.tarefas.Adapter.TarefaAdapeter;
+import com.testeKaffa.tarefas.Adapter.TarefaAdapter;
 import com.testeKaffa.tarefas.Model.Tarefa;
-import com.testeKaffa.tarefas.R;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
@@ -23,7 +21,7 @@ import java.util.List;
 
 public class  MainActivity extends AppCompatActivity {
     private RecyclerView recyclerView;
-    private TarefaAdapeter tarefaAdapter;
+    private TarefaAdapter tarefaAdapter;
     private List<Tarefa> listaTarefas = new ArrayList<>();
 
     @Override
@@ -61,12 +59,12 @@ public class  MainActivity extends AppCompatActivity {
         listaTarefas.add(tarefa2);
 
         Tarefa tarefa3 = new Tarefa();
-        tarefa1.setNomeTarefa("terminal projeto");
+        tarefa1.setNomeTarefa("terminar o projeto");
         listaTarefas.add(tarefa3);
         //configure adpter
+        tarefaAdapter = new TarefaAdapter(listaTarefas);
 
         //instance the object
-        tarefaAdapter = new TarefaAdapeter(listaTarefas);
 
         //configure RecyclerView
         //we use LinearLayout because it's perfect for us in this app about lists
@@ -74,10 +72,16 @@ public class  MainActivity extends AppCompatActivity {
         recyclerView.setLayoutManager(layoutManager);
         //set the size for fixed
         recyclerView.setHasFixedSize(true);
-        //set the LinearLayout to VERTICAL
         recyclerView.addItemDecoration(new DividerItemDecoration(getApplicationContext(),LinearLayoutManager.VERTICAL));
-        //use the adpter
-        recyclerView.setAdapter();
+        //use the adapter
+        recyclerView.setAdapter(tarefaAdapter);
+    }
+
+    @Override
+    //when the app starts will load the list of tasks
+    protected void onStart() {
+        carregarListaDeTarefas();
+        super.onStart();
     }
 
     @Override

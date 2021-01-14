@@ -1,4 +1,4 @@
-package com.testeKaffa.tarefas.Activity;
+package com.testeKaffa.tarefas;
 
 import androidx.appcompat.app.AppCompatActivity;
 
