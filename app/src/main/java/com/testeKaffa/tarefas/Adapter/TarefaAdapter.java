@@ -10,10 +10,10 @@ import com.testeKaffa.tarefas.Model.Tarefa;
 
 import java.util.List;
 
-public class TarefaAdapeter extends RecyclerView.Adapter<TarefaAdapeter.MyViewHolder> {
+public class TarefaAdapter extends RecyclerView.Adapter<TarefaAdapter.MyViewHolder> {
     private List<Tarefa> listaDeTarefas;
     //constructor, to iniciate this class we have to pass a List with tasks
-    public TarefaAdapeter(List<Tarefa> lista) {
+    public TarefaAdapter(List<Tarefa> lista) {
         this.listaDeTarefas = lista;
     }
 
