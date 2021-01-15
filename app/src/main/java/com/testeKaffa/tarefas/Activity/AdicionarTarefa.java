@@ -47,7 +47,8 @@ private Tarefa tarefaAtual;
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         switch (item.getItemId()){
             case R.id.itemSalvar:
-
+                //for database update and modification
+                DAO dao = new DAO(getApplicationContext());
                 if(tarefaAtual != null) { //edition
                     String nomeTarefa = editTarefa.getText().toString();
                     //when the user click in " save" use DAO for edit
@@ -55,7 +56,14 @@ private Tarefa tarefaAtual;
                         Tarefa tarefa = new Tarefa();
                         tarefa.setNomeTarefa(nomeTarefa);
                         tarefa.setId(tarefaAtual.getId());
+                    //uptade de DB
+                        if(dao.atualizar(tarefa)){
+                            finish();
+                            Toast.makeText(getApplicationContext(), "Tarefa atualizada com sucesso", Toast.LENGTH_SHORT).show();
+                        }else{
+                            Toast.makeText(getApplicationContext(), "Erro ao atualizada com sucesso", Toast.LENGTH_SHORT).show();
 
+                        }
                     }
 
                 }else{//save
@@ -63,7 +71,6 @@ private Tarefa tarefaAtual;
                 String nomeTarefa = editTarefa.getText().toString();
                 //when the user click in " save" use DAO for save
                 if( !nomeTarefa.isEmpty()) {
-                    DAO dao = new DAO(getApplicationContext());
                     Tarefa tarefa = new Tarefa();
                     tarefa.setNomeTarefa(nomeTarefa);
                     if (dao.salvar(tarefa)) {

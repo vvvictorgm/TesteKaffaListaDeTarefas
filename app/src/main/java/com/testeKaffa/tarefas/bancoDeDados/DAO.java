@@ -37,7 +37,8 @@ public class DAO implements InterfaceDAO{
 
     @Override
     public boolean atualizar(Tarefa tarefa) {
-        return false;
+        
+        return true;
     }
 
     @Override
