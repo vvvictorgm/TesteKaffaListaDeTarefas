@@ -42,10 +42,11 @@ private Tarefa tarefaAtual;
     //make  when click im save botton
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
-
+        DAO dao = new DAO(getApplicationContext());
         switch (item.getItemId()){
+
+
             case R.id.itemSalvar:
-                DAO dao = new DAO(getApplicationContext());
 
                 //for database update and modification
                 if(tarefaAtual != null){//estou editando uma tarefa

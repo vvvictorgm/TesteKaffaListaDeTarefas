@@ -46,15 +46,22 @@ public class DAO implements InterfaceDAO{
         }catch (Exception e){
             Log.i("INFO DB", "Erro ao atualizar a tarefa" + e.getMessage());
             return false;
-
-
         }
         return true;
     }
 
     @Override
     public boolean deletar(Tarefa tarefa) {
-        return false;
+        try {
+            String[]args ={tarefa.getId().toString()};
+
+            salvarDadosNaTabela.delete(DbHelper.TABELA_TAREFAS, "id=?", args);
+            Log.i("INFO DB", "Tarefa removida com sucesso");
+        }catch (Exception e){
+            Log.i("INFO DB", "Erro ao remover a tarefa" + e.getMessage());
+            return false;
+        }
+        return true;
     }
 
     @Override

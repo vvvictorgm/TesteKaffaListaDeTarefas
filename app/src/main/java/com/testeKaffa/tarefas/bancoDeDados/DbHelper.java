@@ -18,9 +18,11 @@ public class DbHelper extends SQLiteOpenHelper {
     @Override
     public void onCreate(SQLiteDatabase db) {
         //create a SQL table at first use and create a ID with auto increment
-        String sql = "CREATE TABLE IF NOT EXISTS "+TABELA_TAREFAS
-        + " (id INTEGER PRIMARY KEY AUTOINCREMENT," +
+        String sql = "CREATE TABLE IF NOT EXISTS "+
+                TABELA_TAREFAS+
+         " (id INTEGER PRIMARY KEY AUTOINCREMENT," +
                 "nome TEXT NOT NULL); ";
+
         //test if is working ok
         try{
             db.execSQL(sql);
