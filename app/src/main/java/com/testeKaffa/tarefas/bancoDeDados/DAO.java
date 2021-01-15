@@ -37,7 +37,15 @@ public class DAO implements InterfaceDAO{
 
     @Override
     public boolean atualizar(Tarefa tarefa) {
-        
+        ContentValues cv = new ContentValues();
+        cv.put("nome", tarefa.getNomeTarefa());
+        try{
+            String[] args = {tarefa.getId().toString()};
+            salvarDadosNaTabela.update(DbHelper.TABELA_TAREFAS, cv, "id=?", args );
+        }catch (Exception e){
+            Log.e("AVISO", "ERRO AO ATUALIZAR TAREFA"+ e.getMessage());
+            return false;
+        }
         return true;
     }
 
@@ -59,14 +67,15 @@ public class DAO implements InterfaceDAO{
 
            Long id = c.getLong(c.getColumnIndex("id"));
            String nomeTarefa = c.getString(c.getColumnIndex("nome"));
+
            tarefa.setId(id);
            tarefa.setNomeTarefa(nomeTarefa);
+
            tarefas.add(tarefa);
 
        }
 
-
-
-        return
+        return tarefas;
     }
+
 }

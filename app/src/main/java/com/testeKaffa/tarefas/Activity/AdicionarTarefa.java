@@ -30,10 +30,7 @@ private Tarefa tarefaAtual;
         //if tarefaAtual it's not null, so have something, and in that case is to edit it
         if(tarefaAtual != null){
             editTarefa.setText(tarefaAtual.getNomeTarefa());
-
-        }
-
-
+            }
     }
 
     @Override
@@ -45,45 +42,44 @@ private Tarefa tarefaAtual;
     //make  when click im save botton
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        DAO dao = new DAO(getApplicationContext());
+
         switch (item.getItemId()){
             case R.id.itemSalvar:
                 //for database update and modification
-                DAO dao = new DAO(getApplicationContext());
                 if(tarefaAtual != null) { //edition
                     String nomeTarefa = editTarefa.getText().toString();
                     //when the user click in " save" use DAO for edit
-                    if( !nomeTarefa.isEmpty()) {
+                    if (!nomeTarefa.isEmpty()) {
                         Tarefa tarefa = new Tarefa();
                         tarefa.setNomeTarefa(nomeTarefa);
                         tarefa.setId(tarefaAtual.getId());
-                    //uptade de DB
-                        if(dao.atualizar(tarefa)){
+                        //uptade de DB
+                        if (dao.atualizar(tarefa)) {
                             finish();
                             Toast.makeText(getApplicationContext(), "Tarefa atualizada com sucesso", Toast.LENGTH_SHORT).show();
-                        }else{
+                        } else {
                             Toast.makeText(getApplicationContext(), "Erro ao atualizada com sucesso", Toast.LENGTH_SHORT).show();
 
                         }
+
                     }
+                }else {//save
 
-                }else{//save
+                    String nomeTarefa = editTarefa.getText().toString();
+                    //when the user click in " save" use DAO for save
+                    if (!nomeTarefa.isEmpty()) {
+                        Tarefa tarefa = new Tarefa();
+                        tarefa.setNomeTarefa(nomeTarefa);
+                        if (dao.salvar(tarefa)) {
+                            finish();
+                            Toast.makeText(getApplicationContext(), "Tarefa salva com sucesso", Toast.LENGTH_SHORT).show();
+                        } else {
+                            Toast.makeText(getApplicationContext(), "Erro ao salvar tarefa", Toast.LENGTH_SHORT).show();
 
-                String nomeTarefa = editTarefa.getText().toString();
-                //when the user click in " save" use DAO for save
-                if( !nomeTarefa.isEmpty()) {
-                    Tarefa tarefa = new Tarefa();
-                    tarefa.setNomeTarefa(nomeTarefa);
-                    if (dao.salvar(tarefa)) {
-                        finish();
-                        Toast.makeText(getApplicationContext(), "Tarefa salva com sucesso", Toast.LENGTH_SHORT).show();
-                    } else {
-                        Toast.makeText(getApplicationContext(), "Erro ao salvar tarefa", Toast.LENGTH_SHORT).show();
-
+                        }
                     }
                 }
-
-
-
                 break;
         }
         return super.onOptionsItemSelected(item);
