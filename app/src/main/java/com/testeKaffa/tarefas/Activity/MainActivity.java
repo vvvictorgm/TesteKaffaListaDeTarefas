@@ -1,6 +1,7 @@
 package com.testeKaffa.tarefas.Activity;
 
 import android.content.ContentValues;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
@@ -22,6 +23,7 @@ import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.AdapterView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -64,7 +66,31 @@ public class  MainActivity extends AppCompatActivity {
                         AlertDialog.Builder dialog =  new AlertDialog.Builder(MainActivity.this);
 
                         dialog.setTitle("Processo Irreversivel");
-                        dialog.setMessage("Deseja mesmo deletar a tarefa: "+ tarefaSelecionada +"?");
+                        dialog.setMessage("Deseja mesmo deletar essa tarefa?");
+                        dialog.setPositiveButton("Sim", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                DAO dao = new DAO(getApplicationContext());
+                                if(dao.deletar(tarefaSelecionada)){
+                                    carregarListaDeTarefas();
+                                    Toast.makeText(getApplicationContext(), "Sucesso ao deletar a tarefa", Toast.LENGTH_SHORT).show();
+
+                                }else{
+                                    Toast.makeText(getApplicationContext(), "falha ao deletar a tarefa", Toast.LENGTH_SHORT).show();
+
+                                }
+
+                            }
+                        });
+                        dialog.setNegativeButton("Não", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+
+                            }
+                        });
+
+                        dialog.create();
+                        dialog.show();
 
                     }
 
@@ -90,9 +116,8 @@ public class  MainActivity extends AppCompatActivity {
         //list Tasks
         DAO dao = new DAO(getApplicationContext());
         listaTarefas = dao.listar();
-
-
-        //instance the object
+        //Adapter
+        tarefaAdapter = new TarefaAdapter(listaTarefas);
 
         //configure RecyclerView
         //we use LinearLayout because it's perfect for us in this app about lists
