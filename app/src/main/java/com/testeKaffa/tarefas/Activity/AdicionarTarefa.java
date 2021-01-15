@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.Toast;
 
 import com.google.android.material.textfield.TextInputEditText;
 import com.testeKaffa.tarefas.Model.Tarefa;
@@ -47,14 +48,22 @@ private Tarefa tarefaAtual;
         switch (item.getItemId()){
             case R.id.itemSalvar:
 
+                if(tarefaAtual != null) { //edition
+                }else{//save
+
                 String nomeTarefa = editTarefa.getText().toString();
                 //when the user click in " save" use DAO for save
                 if( !nomeTarefa.isEmpty()) {
                     DAO dao = new DAO(getApplicationContext());
                     Tarefa tarefa = new Tarefa();
                     tarefa.setNomeTarefa(nomeTarefa);
-                    dao.salvar(tarefa);
-                    finish();
+                    if (dao.salvar(tarefa)) {
+                        finish();
+                        Toast.makeText(getApplicationContext(), "Tarefa salva com sucesso", Toast.LENGTH_SHORT).show();
+                    } else {
+                        Toast.makeText(getApplicationContext(), "Erro ao salvar tarefa", Toast.LENGTH_SHORT).show();
+
+                    }
                 }
 
 
