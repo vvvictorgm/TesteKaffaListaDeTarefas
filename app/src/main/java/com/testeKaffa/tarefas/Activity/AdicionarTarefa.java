@@ -49,6 +49,15 @@ private Tarefa tarefaAtual;
             case R.id.itemSalvar:
 
                 if(tarefaAtual != null) { //edition
+                    String nomeTarefa = editTarefa.getText().toString();
+                    //when the user click in " save" use DAO for edit
+                    if( !nomeTarefa.isEmpty()) {
+                        Tarefa tarefa = new Tarefa();
+                        tarefa.setNomeTarefa(nomeTarefa);
+                        tarefa.setId(tarefaAtual.getId());
+
+                    }
+
                 }else{//save
 
                 String nomeTarefa = editTarefa.getText().toString();
