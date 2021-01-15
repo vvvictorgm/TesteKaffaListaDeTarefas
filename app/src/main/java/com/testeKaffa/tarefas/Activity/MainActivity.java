@@ -52,7 +52,7 @@ public class  MainActivity extends AppCompatActivity {
                         //send the task to screen of add task
                         Intent intent = new Intent(MainActivity.this, AdicionarTarefa.class);
                         intent.putExtra("tarefaSelecionada", tarefaSelecionada);
-                        startActivity(intent);
+                        startActivity( intent);
 
                     }
 
