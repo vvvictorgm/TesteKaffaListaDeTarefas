@@ -11,6 +11,7 @@ import com.testeKaffa.tarefas.bancoDeDados.DAO;
 import com.testeKaffa.tarefas.bancoDeDados.DbHelper;
 import com.testeKaffa.tarefas.biblioteca.RecyclerItemClickListener;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.recyclerview.widget.DividerItemDecoration;
@@ -29,6 +30,7 @@ public class  MainActivity extends AppCompatActivity {
     private RecyclerView recyclerView;
     private TarefaAdapter tarefaAdapter;
     private List<Tarefa> listaTarefas = new ArrayList<>();
+    private Tarefa tarefaSelecionada;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -58,6 +60,11 @@ public class  MainActivity extends AppCompatActivity {
 
                     @Override
                     public void onLongItemClick(View view, int position) {
+                        tarefaSelecionada = listaTarefas.get(position);
+                        AlertDialog.Builder dialog =  new AlertDialog.Builder(MainActivity.this);
+
+                        dialog.setTitle("Processo Irreversivel");
+                        dialog.setMessage("Deseja mesmo deletar a tarefa: "+ tarefaSelecionada +"?");
 
                     }
 

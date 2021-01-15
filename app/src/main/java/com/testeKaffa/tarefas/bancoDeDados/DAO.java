@@ -81,7 +81,7 @@ public class DAO implements InterfaceDAO{
             tarefa.setId(id);
             tarefa.setNomeTarefa(nomeTarefa);
 
-            tarefas.add( tarefa);
+            tarefas.add(tarefa);
 
         }
 
