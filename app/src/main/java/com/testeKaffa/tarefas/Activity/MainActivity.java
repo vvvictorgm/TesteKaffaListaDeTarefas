@@ -47,6 +47,13 @@ public class  MainActivity extends AppCompatActivity {
                 new RecyclerItemClickListener(getApplicationContext(), recyclerView, new RecyclerItemClickListener.OnItemClickListener() {
                     @Override
                     public void onItemClick(View view, int position) {
+                        //we have to recover the task to edit
+                        Tarefa tarefaSelecionada = listaTarefas.get(position);
+                        //send the task to screen of add task
+                        Intent intent = new Intent(MainActivity.this, AdicionarTarefa.class);
+                        intent.putExtra("tarefaSelecionada", tarefaSelecionada);
+
+                        startActivity(intent);
 
                     }
 

@@ -1,4 +1,4 @@
-package com.testeKaffa.tarefas.Activity;
+ package com.testeKaffa.tarefas.Activity;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -14,12 +14,25 @@ import com.testeKaffa.tarefas.bancoDeDados.DAO;
 
 public class AdicionarTarefa extends AppCompatActivity {
 private TextInputEditText editTarefa;
+private Tarefa tarefaAtual;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_adicionar_tarefa);
 
         editTarefa = findViewById(R.id.textTarefa);
+
+        //recover the taks if it's edition
+        //we have to Cast (Tarefa) because it get a Serializable
+        tarefaAtual = (Tarefa) getIntent().getSerializableExtra("tarefaSelecionada");
+
+        //if tarefaAtual it's not null, so have something, and in that case is to edit it
+        if(tarefaAtual != null){
+            editTarefa.setText(tarefaAtual.getNomeTarefa());
+
+        }
+
+
     }
 
     @Override
