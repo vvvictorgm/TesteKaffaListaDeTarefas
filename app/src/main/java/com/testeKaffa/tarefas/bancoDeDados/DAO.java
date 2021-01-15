@@ -39,12 +39,15 @@ public class DAO implements InterfaceDAO{
     public boolean atualizar(Tarefa tarefa) {
         ContentValues cv = new ContentValues();
         cv.put("nome", tarefa.getNomeTarefa());
-        try{
-            String[] args = {tarefa.getId().toString()};
-            salvarDadosNaTabela.update(DbHelper.TABELA_TAREFAS, cv, "id=?", args );
+        try {
+            String[]args ={tarefa.getId().toString()};
+            salvarDadosNaTabela.update(DbHelper.TABELA_TAREFAS,cv, "id=?", args);
+            Log.i("INFO DB", "Tarefa atualizada com sucesso");
         }catch (Exception e){
-            Log.e("AVISO", "ERRO AO ATUALIZAR TAREFA"+ e.getMessage());
+            Log.i("INFO DB", "Erro ao atualizar a tarefa" + e.getMessage());
             return false;
+
+
         }
         return true;
     }
