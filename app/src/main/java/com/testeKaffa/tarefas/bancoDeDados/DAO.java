@@ -59,24 +59,24 @@ public class DAO implements InterfaceDAO{
 
     @Override
     public List<Tarefa> listar() {
-       List<Tarefa> tarefas = new ArrayList<>();
-       //take all the tasks
-       String sql = "SELECT * FROM " +DbHelper.TABELA_TAREFAS +";";
-       // now we use a cursor to navegate in DB
-       Cursor c = lerDadosNaTabela.rawQuery(sql, null);
+        List<Tarefa>tarefas = new ArrayList<>();
 
-       while(c.moveToNext()){
-           Tarefa tarefa = new Tarefa();
+        String sql = "SELECT *FROM " + DbHelper.TABELA_TAREFAS +" ;";
+        Cursor c = lerDadosNaTabela.rawQuery(sql, null);
 
-           Long id = c.getLong(c.getColumnIndex("id"));
-           String nomeTarefa = c.getString(c.getColumnIndex("nome"));
+        while(c.moveToNext()){
 
-           tarefa.setId(id);
-           tarefa.setNomeTarefa(nomeTarefa);
+            Tarefa tarefa = new Tarefa();
 
-           tarefas.add(tarefa);
+            Long id = c.getLong(c.getColumnIndex("id"));
+            String nomeTarefa = c.getString(c.getColumnIndex("nome"));
 
-       }
+            tarefa.setId(id);
+            tarefa.setNomeTarefa(nomeTarefa);
+
+            tarefas.add( tarefa);
+
+        }
 
         return tarefas;
     }

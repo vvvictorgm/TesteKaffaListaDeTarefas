@@ -24,7 +24,6 @@ public class DbHelper extends SQLiteOpenHelper {
         //test if is working ok
         try{
             db.execSQL(sql);
-            onCreate(db);
             Log.i("INFO DB", "SUCESSO: ");
 
         }catch(Exception e){
